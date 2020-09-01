@@ -63,7 +63,7 @@ COMMAND LINE COMMANDS
 	-cfun 		convex gap penalty function. 1: SQRT, or 2: Ln (default is 1 and SQRT) (available only for msa_cnv)
 
 COMMAND LINE USAGE EXAMPLE
-    Example: ./msa_cnv -in ./Data/bali3/BB11001.fa -out ./Data/results/BB11001_opt.txt -time 3600 -op 8 -ep 2 -cp 2 -cfun 1 -submat ./Data/blosum.ncbi
+    Example: ./msa_cnv -in ./Data/bali4/BB11001.fa -out ./Data/results/BB11001_opt.txt -time 3600 -op 8 -ep 2 -cp 2 -cfun 1 -submat ./Data/blosum.ncbi
     This command uses msa_cnv for an alignment of sequences in file BB11001.fa found at directory ./Data/bali3/ 
     The algorithm uses a convex gap penalty function of 8 + 2*x + 2*SQRT(x), and substitution matrix of blosum.ncbi found at directory ./Data/
     The algorithm terminates at most after 3600 seconds with the best found solution, which is outputted to file BB11001_opt.txt in directory ./Data/results/
