@@ -38,7 +38,7 @@ DOWNLOAD
 
 PENALTY FUNCTIONS
     MSAMDD supports linear, concave, and convex penalty functions for optimal sequence alignments through two programs: msa_aff and msa_cnv. 
-    msa_aff is intended for constant, linear, or affine gap penalty functions. The affine penalty function is of the form a + b*x, where x is the gap length and a and b are 
+    msa_aff is intended for constant, linear, or affine gap penalty functions. The affine penalty function is of the form a + b*x. Here, x is the gap length and a and b are 
     constants specified by the user. In sequence alignment terminology, constant a corresponds to the opening gap penalty, and constant b corresponds to the extension gap penalty. 
     Constant and linear penalty functions are a special case of the affine gap penalty. A constant penalty function is achieved when b=0, and a linear gap penalty function is achieved when a=0. 
     msa_cnv is intended for convex gap penalty functions. The penalty functions are of the form a + b*x + c*SQRT(x) or a + b*x + c*Ln(x), where c is a constant specified by the user
