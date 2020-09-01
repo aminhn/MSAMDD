@@ -38,10 +38,10 @@ DOWNLOAD
 
 PENALTY FUNCTIONS
     MSAMDD supports linear, concave, and convex penalty functions for optimal sequence alignments through two programs: msa_aff and msa_cnv. 
-    msa_aff is intended for constant, linear, or affine gap penalty functions. The affine penalty function is of the form $a + bx$. Here, x is the gap length and a and b are 
+    msa_aff is intended for constant, linear, or affine gap penalty functions. The affine penalty function is of the form a + bx. Here, x is the gap length and a and b are 
     constants specified by the user. In sequence alignment terminology, constant a corresponds to the opening gap penalty, and constant b corresponds to the extension gap penalty. 
     Constant and linear penalty functions are a special case of the affine gap penalty. A constant penalty function is achieved when b=0, and a linear gap penalty function is achieved when a=0. 
-    msa_cnv is intended for convex gap penalty functions. The penalty functions are of the form a + b*x + c*SQRT(x) or a + b*x + c*Ln(x), where c is a constant specified by the user
+    msa_cnv is intended for convex gap penalty functions. The penalty functions are of the form a + bx + cSQRT(x) or a + bx + cLn(x), where c is a constant specified by the user
     SQRT(x) is the square root of the gap length, and Ln(x) is the natural logarithm of the gap length. In sequence alignment terminology, constant c corresponds to the convex gap penalty.
     Note that the affine gap penalty is a special case of the convex gap penalty with c=0. In that regard, although msa_cnv may be used to accommodate affine, linear or constant gap penalty functions
     the runtime of msa_cnv is significantly slower than msa_aff. Therefore, the user is advised to use msa_cnv only when convex gap penalty functions are required, and use msa_aff otherwise.
@@ -60,7 +60,7 @@ COMMAND LINE COMMANDS
 
 COMMAND LINE USAGE EXAMPLE
     The below command uses msa_cnv for an alignment of sequences in file BB11001.fa found at directory ./Data/bali3/ 
-    The algorithm uses a convex gap penalty function of 8 + 2*x + 2*SQRT(x), and substitution matrix of blosum.ncbi found at directory ./Data/
+    The algorithm uses a convex gap penalty function of 8 + 2x + 2SQRT(x), and substitution matrix of blosum.ncbi found at directory ./Data/
     The algorithm terminates at most after 3600 seconds with the best found solution, which is outputted to file BB11001_opt.txt in directory ./Data/results/
 
     ./msa_cnv -in ./Data/bali4/BB11001.fa -out ./Data/results/BB11001_opt.txt -time 3600 -op 8 -ep 2 -cp 2 -cfun 1 -submat ./Data/blosum.ncbi
