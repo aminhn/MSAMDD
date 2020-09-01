@@ -11,7 +11,6 @@ DESCRIPTION
     	
 REFERENCE
     Please cite the below paper when using MSAMDD. Technical and algorithm specifics may also be found in this paper.
- 
     Hosseininasab, A. and van Hoeve, W.J., 2019. 
     Exact Multiple Sequence Alignment by Synchronized Decision Diagrams. 
     INFORMS Journal on Computing (to appear).
@@ -28,7 +27,6 @@ EXTERNAL SOFTWARE REQUIREMENTS FOR INSTALLATION
     CPLEX should be installed in the opt/ibm/ILOG directory at the root folder of the Linux system. 
     MSAMDD automatically detects and uses the latest version at this directory. In case CPLEX is installed in a different directory, 
     the user must change the default directory in the Makefile at line 5.
-    
     MSAMDD further requires the MUSCLE program for its heuristic alignments. Although MSAMDD can be executed without MUSCLE, its solution time will be significantly slowed.
     MUSCLE may be downloaded from https://www.drive5.com/muscle/
     All credit for the usage of the MUSCLE software goes to Robert C. Edgar, and should be properly cited as 
@@ -40,11 +38,9 @@ DOWNLOAD
 
 PENALTY FUNCTIONS
     MSAMDD supports linear, concave, and convex penalty functions for optimal sequence alignments through two programs: msa_aff and msa_cnv. 
-    
     msa_aff is intended for constant, linear, or affine gap penalty functions. The affine penalty function is of the form a + b*x, where x is the gap length and a and b are 
     constants specified by the user. In sequence alignment terminology, constant a corresponds to the opening gap penalty, and constant b corresponds to the extension gap penalty. 
     Constant and linear penalty functions are a special case of the affine gap penalty. A constant penalty function is achieved when b=0, and a linear gap penalty function is achieved when a=0. 
-    
     msa_cnv is intended for convex gap penalty functions. The penalty functions are of the form a + b*x + c*SQRT(x) or a + b*x + c*Ln(x), where c is a constant specified by the user
     SQRT(x) is the square root of the gap length, and Ln(x) is the natural logarithm of the gap length. In sequence alignment terminology, constant c corresponds to the convex gap penalty.
     Note that the affine gap penalty is a special case of the convex gap penalty with c=0. In that regard, although msa_cnv may be used to accommodate affine, linear or constant gap penalty functions
@@ -63,10 +59,12 @@ COMMAND LINE COMMANDS
 	-cfun 		convex gap penalty function. 1: SQRT, or 2: Ln (default is 1 and SQRT) (available only for msa_cnv)
 
 COMMAND LINE USAGE EXAMPLE
-    Example: ./msa_cnv -in ./Data/bali4/BB11001.fa -out ./Data/results/BB11001_opt.txt -time 3600 -op 8 -ep 2 -cp 2 -cfun 1 -submat ./Data/blosum.ncbi
-    This command uses msa_cnv for an alignment of sequences in file BB11001.fa found at directory ./Data/bali3/ 
+    The below command uses msa_cnv for an alignment of sequences in file BB11001.fa found at directory ./Data/bali3/ 
     The algorithm uses a convex gap penalty function of 8 + 2*x + 2*SQRT(x), and substitution matrix of blosum.ncbi found at directory ./Data/
     The algorithm terminates at most after 3600 seconds with the best found solution, which is outputted to file BB11001_opt.txt in directory ./Data/results/
+
+    ./msa_cnv -in ./Data/bali4/BB11001.fa -out ./Data/results/BB11001_opt.txt -time 3600 -op 8 -ep 2 -cp 2 -cfun 1 -submat ./Data/blosum.ncbi
+    
 
 DATABASE
     The MSAMDD package includes sequences for the BAliBASE versions 1 (./Data/bali1/) and BAliBASE version 4 (./Data/bali4). These databases may be downloaded from http://www.lbgi.fr/balibase/
